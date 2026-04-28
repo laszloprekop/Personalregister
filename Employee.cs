@@ -8,7 +8,7 @@ public class Employee
     public bool IsDeleted { get; set; }
     public string FullName => $"{FirstName} {LastName}";
     
-    public string ToString()                                                                
+    public override string ToString()                                                                
     {                                                                                                              
         return $"{FullName} - {Salary:C}";                                                  
     }  
