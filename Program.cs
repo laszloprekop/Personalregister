@@ -1,7 +1,18 @@
-﻿Console.WriteLine("=== Employee Register ===");
+﻿using Personalregister;
+
+var register = new EmployeeRegister();
+register.AddEmployee(new Employee("Sven", "Svensson", 52000.00));
+register.AddEmployee(new Employee("Lars", "Larsson", 48000.00));
+
+
+Console.WriteLine("=== Employee Register ===");
 Console.WriteLine();
-Console.WriteLine("1. Sven Svensson - 52,000.00 SEK");
-Console.WriteLine("2. Lars Larsson - 48,000.00 SEK");
+
+foreach (var (employee, index) in register.GetActiveEmployees().Select((e, i) => (e, i + 1)))
+{
+    Console.WriteLine($"{index + 1}. {employee}");
+}
+
 Console.WriteLine();
 Console.WriteLine("[A] Add employee");
 Console.WriteLine("[Q] Quit");
