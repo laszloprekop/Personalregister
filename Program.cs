@@ -27,7 +27,12 @@ while (true)
         Console.WriteLine("[D] Delete");
         Console.WriteLine("[B] Back");
         Console.Write("Choice: ");
-        Console.ReadLine();
+        var action = Console.ReadLine()?.Trim().ToUpper();
+
+        if (action == "E")
+            EditFlow(register, employee);
+        else if (action == "D")
+            DeleteFlow(register, employee);
     }
 }
 
@@ -95,10 +100,10 @@ static void DeleteFlow(EmployeeRegister register, Employee employee)
         register.SoftDeleteEmployee(employee);
 }
 
-static void EditFlow(EmployeeRegister register, Employee employee)                                             
-{                                                                                             
+static void EditFlow(EmployeeRegister register, Employee employee)
+{
     var firstName = ReadNonEmptyString($"First name [{employee.FirstName}]: ");
-    var lastName = ReadNonEmptyString($"Last name [{employee.LastName}]: ");                                   
-    var salary = ReadDouble($"Salary [{employee.Salary}]: ", 0);                                               
-    register.UpdateEmployee(employee, firstName, lastName, salary);                                                    
+    var lastName = ReadNonEmptyString($"Last name [{employee.LastName}]: ");
+    var salary = ReadDouble($"Salary [{employee.Salary}]: ", 0);
+    register.UpdateEmployee(employee, firstName, lastName, salary);
 }
