@@ -5,8 +5,19 @@ register.AddEmployee(new Employee("Sven", "Svensson", 52000.00));
 register.AddEmployee(new Employee("Lars", "Larsson", 48000.00));
 
 
-PrintListView(register);
-
+while (true)
+{
+    PrintListView(register);
+    var input = Console.ReadLine().Trim().ToUpper();
+    
+    if (input == "Q")
+    {
+        break;
+    } else if (input == "A")
+        Console.WriteLine("Add employee (not implemented yet)");
+    else
+        Console.WriteLine("(not implemented yet)");
+}
 
 static void PrintListView(EmployeeRegister register)
 {
