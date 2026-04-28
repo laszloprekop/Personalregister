@@ -8,4 +8,9 @@ public class EmployeeRegister
     {
         _employees.Add(employee);
     }
+    
+    public IReadOnlyList<Employee> GetActiveEmployees()
+    {
+        return _employees.Where(e => !e.IsDeleted).ToList();
+    }
 }
