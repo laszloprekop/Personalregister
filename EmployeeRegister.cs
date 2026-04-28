@@ -2,10 +2,10 @@ namespace Personalregister;
 
 public class EmployeeRegister
 {
-    public List<Employee> Employees = new List<Employee>();
+    private List<Employee> _employees = new List<Employee>();
     
     public void AddEmployee(Employee employee)
     {
-        Employees.Add(employee);
+        _employees.Add(employee);
     }
 }
