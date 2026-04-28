@@ -17,10 +17,10 @@ while (true)
     else if (input == "A")
     {
         Console.Write("First name: ");
-        var firstName = Console.ReadLine();
+        var firstName = ReadNonEmptyString("First name: ");                                                            
 
         Console.Write("Last name: ");
-        var lastName = Console.ReadLine();
+        var lastName = ReadNonEmptyString("Last name: ");                                                              
 
         Console.Write("Salary: ");
         var salary = double.Parse(Console.ReadLine());
@@ -54,3 +54,15 @@ static void PrintListView(EmployeeRegister register)
     Console.WriteLine("[Q] Quit");
     Console.Write("Enter number to select employee: ");
 }
+
+static string ReadNonEmptyString(string prompt)                                                                
+{                                                                                     
+    while (true)                                                                                               
+    {                                                                                 
+        Console.Write(prompt);
+        var value = Console.ReadLine()?.Trim();
+        if (!string.IsNullOrWhiteSpace(value))
+            return value;                                                                                      
+        Console.WriteLine("Input cannot be empty. Try again.");
+    }                                                                                                          
+}                        
