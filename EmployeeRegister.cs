@@ -29,4 +29,11 @@ public class EmployeeRegister
     {
         employee.IsDeleted = true;
     }
+    
+    public void UpdateEmployee(Employee employee, string firstName, string lastName, double salary)
+    {
+        employee.FirstName = firstName;
+        employee.LastName = lastName;
+        employee.Salary = salary;
+    }
 }
