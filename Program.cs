@@ -94,3 +94,11 @@ static void DeleteFlow(EmployeeRegister register, Employee employee)
     if (confirm == "y")
         register.SoftDeleteEmployee(employee);
 }
+
+static void EditFlow(EmployeeRegister register, Employee employee)                                             
+{                                                                                             
+    var firstName = ReadNonEmptyString($"First name [{employee.FirstName}]: ");
+    var lastName = ReadNonEmptyString($"Last name [{employee.LastName}]: ");                                   
+    var salary = ReadDouble($"Salary [{employee.Salary}]: ", 0);                                               
+    register.UpdateEmployee(employee, firstName, lastName, salary);                                                    
+}
