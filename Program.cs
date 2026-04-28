@@ -17,17 +17,17 @@ while (true)
     else if (input == "A")
         AddEmployeeFlow(register);
 
-    else                                                                  
+    else
     {
         var index = int.Parse(input);
         var employee = register.GetByIdNumber(index);
-        Console.WriteLine($"\nSelected: {employee}");                                                              
+        Console.WriteLine($"\nSelected: {employee}");
         Console.WriteLine();
-        Console.WriteLine("[E] Edit");                                                                             
-        Console.WriteLine("[D] Delete");                                                                           
+        Console.WriteLine("[E] Edit");
+        Console.WriteLine("[D] Delete");
         Console.WriteLine("[B] Back");
-        Console.Write("Choice: ");                                                                                 
-        Console.ReadLine();                                                                                        
+        Console.Write("Choice: ");
+        Console.ReadLine();
     }
 }
 
@@ -84,4 +84,13 @@ static void AddEmployeeFlow(EmployeeRegister register)
     var lastName = ReadNonEmptyString("Last name: ");
     var salary = ReadDouble("Salary: ", 0);
     register.AddEmployee(new Employee(firstName, lastName, salary));
+}
+
+
+static void DeleteFlow(EmployeeRegister register, Employee employee)
+{
+    Console.Write($"Are you sure you want to delete {employee.FullName}? (y/n): ");
+    var confirm = Console.ReadLine()?.Trim().ToLower();
+    if (confirm == "y")
+        register.SoftDeleteEmployee(employee);
 }
