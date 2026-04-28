@@ -18,7 +18,22 @@ while (true)
         AddEmployeeFlow(register);
 
     else
-        Console.WriteLine("(not implemented yet)");
+    {
+        var index = int.Parse(input);
+        var employee = register.GetByIdNumber(index);
+        Console.WriteLine($"\nSelected: {employee}");
+        Console.WriteLine();
+        Console.WriteLine("[E] Edit");
+        Console.WriteLine("[D] Delete");
+        Console.WriteLine("[B] Back");
+        Console.Write("Choice: ");
+        var action = Console.ReadLine()?.Trim().ToUpper();
+
+        if (action == "E")
+            EditFlow(register, employee);
+        else if (action == "D")
+            DeleteFlow(register, employee);
+    }
 }
 
 static void PrintListView(EmployeeRegister register)
@@ -74,4 +89,21 @@ static void AddEmployeeFlow(EmployeeRegister register)
     var lastName = ReadNonEmptyString("Last name: ");
     var salary = ReadDouble("Salary: ", 0);
     register.AddEmployee(new Employee(firstName, lastName, salary));
+}
+
+
+static void DeleteFlow(EmployeeRegister register, Employee employee)
+{
+    Console.Write($"Are you sure you want to delete {employee.FullName}? (y/n): ");
+    var confirm = Console.ReadLine()?.Trim().ToLower();
+    if (confirm == "y")
+        register.SoftDeleteEmployee(employee);
+}
+
+static void EditFlow(EmployeeRegister register, Employee employee)
+{
+    var firstName = ReadNonEmptyString($"First name [{employee.FirstName}]: ");
+    var lastName = ReadNonEmptyString($"Last name [{employee.LastName}]: ");
+    var salary = ReadDouble($"Salary [{employee.Salary}]: ", 0);
+    register.UpdateEmployee(employee, firstName, lastName, salary);
 }
