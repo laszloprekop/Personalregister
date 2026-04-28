@@ -13,4 +13,14 @@ public class EmployeeRegister
     {
         return _employees.Where(e => !e.IsDeleted).ToList();
     }
+
+    public Employee GetByIdNumber(int idNumber)
+    {
+        var active = GetActiveEmployees();
+        if (idNumber > active.Count || idNumber < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(idNumber), $"No employee with this number: {idNumber}");
+        }
+        return active[idNumber -1];
+    }
 }
