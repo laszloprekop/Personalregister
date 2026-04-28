@@ -17,13 +17,13 @@ while (true)
     else if (input == "A")
     {
         Console.Write("First name: ");
-        var firstName = ReadNonEmptyString("First name: ");                                                            
+        var firstName = ReadNonEmptyString("First name: ");
 
         Console.Write("Last name: ");
-        var lastName = ReadNonEmptyString("Last name: ");                                                              
+        var lastName = ReadNonEmptyString("Last name: ");
 
         Console.Write("Salary: ");
-        var salary = double.Parse(Console.ReadLine());
+        var salary = ReadDouble("Salary: ", 0);
 
         register.AddEmployee(new Employee(firstName, lastName, salary));
     }
@@ -55,14 +55,25 @@ static void PrintListView(EmployeeRegister register)
     Console.Write("Enter number to select employee: ");
 }
 
-static string ReadNonEmptyString(string prompt)                                                                
-{                                                                                     
-    while (true)                                                                                               
-    {                                                                                 
+static string ReadNonEmptyString(string prompt)
+{
+    while (true)
+    {
         Console.Write(prompt);
         var value = Console.ReadLine()?.Trim();
         if (!string.IsNullOrWhiteSpace(value))
-            return value;                                                                                      
+            return value;
         Console.WriteLine("Input cannot be empty. Try again.");
-    }                                                                                                          
-}                        
+    }
+}
+
+static double ReadDouble(string prompt, double min)
+{
+    while (true)
+    {
+        Console.Write(prompt);
+        if (double.TryParse(Console.ReadLine(), out var value) && value >= min)
+            return value;
+        Console.WriteLine($"Please enter a valid number greater than or equal to {min}.");
+    }
+}
