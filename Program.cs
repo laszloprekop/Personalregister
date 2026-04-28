@@ -9,12 +9,24 @@ while (true)
 {
     PrintListView(register);
     var input = Console.ReadLine().Trim().ToUpper();
-    
+
     if (input == "Q")
     {
         break;
-    } else if (input == "A")
-        Console.WriteLine("Add employee (not implemented yet)");
+    }
+    else if (input == "A")
+    {
+        Console.Write("First name: ");
+        var firstName = Console.ReadLine();
+
+        Console.Write("Last name: ");
+        var lastName = Console.ReadLine();
+
+        Console.Write("Salary: ");
+        var salary = double.Parse(Console.ReadLine());
+
+        register.AddEmployee(new Employee(firstName, lastName, salary));
+    }
     else
         Console.WriteLine("(not implemented yet)");
 }
