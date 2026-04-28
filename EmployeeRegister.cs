@@ -3,12 +3,12 @@ namespace Personalregister;
 public class EmployeeRegister
 {
     private List<Employee> _employees = new List<Employee>();
-    
+
     public void AddEmployee(Employee employee)
     {
         _employees.Add(employee);
     }
-    
+
     public IReadOnlyList<Employee> GetActiveEmployees()
     {
         return _employees.Where(e => !e.IsDeleted).ToList();
@@ -21,6 +21,12 @@ public class EmployeeRegister
         {
             throw new ArgumentOutOfRangeException(nameof(idNumber), $"No employee with this number: {idNumber}");
         }
-        return active[idNumber -1];
+
+        return active[idNumber - 1];
+    }
+
+    public void SoftDeleteEmployee(Employee employee)
+    {
+        employee.IsDeleted = true;
     }
 }
