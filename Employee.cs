@@ -7,6 +7,11 @@ public class Employee
     public double Salary { get; set; }
     public bool IsDeleted { get; set; }
     public string FullName => $"{FirstName} {LastName}";
+    
+    public string ToString()                                                                
+    {                                                                                                              
+        return $"{FullName} - {Salary:C}";                                                  
+    }  
 
     public Employee(string firstName, string lastName, double salary, bool isDeleted = false)
     {
