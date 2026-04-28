@@ -17,8 +17,18 @@ while (true)
     else if (input == "A")
         AddEmployeeFlow(register);
 
-    else
-        Console.WriteLine("(not implemented yet)");
+    else                                                                  
+    {
+        var index = int.Parse(input);
+        var employee = register.GetByIdNumber(index);
+        Console.WriteLine($"\nSelected: {employee}");                                                              
+        Console.WriteLine();
+        Console.WriteLine("[E] Edit");                                                                             
+        Console.WriteLine("[D] Delete");                                                                           
+        Console.WriteLine("[B] Back");
+        Console.Write("Choice: ");                                                                                 
+        Console.ReadLine();                                                                                        
+    }
 }
 
 static void PrintListView(EmployeeRegister register)
