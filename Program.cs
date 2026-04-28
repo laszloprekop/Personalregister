@@ -15,18 +15,8 @@ while (true)
         break;
     }
     else if (input == "A")
-    {
-        Console.Write("First name: ");
-        var firstName = ReadNonEmptyString("First name: ");
+        AddEmployeeFlow(register);
 
-        Console.Write("Last name: ");
-        var lastName = ReadNonEmptyString("Last name: ");
-
-        Console.Write("Salary: ");
-        var salary = ReadDouble("Salary: ", 0);
-
-        register.AddEmployee(new Employee(firstName, lastName, salary));
-    }
     else
         Console.WriteLine("(not implemented yet)");
 }
@@ -76,4 +66,12 @@ static double ReadDouble(string prompt, double min)
             return value;
         Console.WriteLine($"Please enter a valid number greater than or equal to {min}.");
     }
+}
+
+static void AddEmployeeFlow(EmployeeRegister register)
+{
+    var firstName = ReadNonEmptyString("First name: ");
+    var lastName = ReadNonEmptyString("Last name: ");
+    var salary = ReadDouble("Salary: ", 0);
+    register.AddEmployee(new Employee(firstName, lastName, salary));
 }
