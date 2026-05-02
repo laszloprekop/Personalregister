@@ -1,23 +1,22 @@
-# Personalregister
+# C# Exercises
 
-A console application for managing an employee register at a small restaurant.
+A collection of C# programming exercises completed as part of the Lexicon .NET developer course.
 
-## Features
+Exercises are written and documented in both English and Swedish.
 
-- View a list of active employees
-- Add new employees
-- Edit employee name and salary
-- Soft-delete employees (data preserved for the session)
+## Exercises
 
-## Running the app
+| # | Name | Description |
+|---|------|-------------|
+| 01 | [Personalregister](01-personalregister/) | Console app for managing an employee register |
 
-dotnet run
+## Structure
 
-## Design
+Each exercise follows the same layout:
 
-See [docs/PRD.md](docs/PRD.md) for the full product requirements.
-
-## Notes
-
-- Data is in-memory only — no persistence between runs
-- All input is validated at the console boundary
+```
+<id>-<name>/
+├── src/        # source code
+├── docs/       # plans, notes, usage
+└── material/   # received requirements, assets, feedback
+```

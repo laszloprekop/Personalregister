@@ -494,3 +494,6 @@ $RECYCLE.BIN/
 .aider*
 .copilot/
 *.aider
+
+# Untracked subfolders (local-only notes, drafts, received files not for version control)
+**/untracked/
