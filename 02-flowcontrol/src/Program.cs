@@ -26,8 +26,7 @@ while (running)
             Console.Clear();
             Console.WriteLine("★ ★ ★  Single ticket price  ★ ★ ★ ");
             Console.WriteLine();
-            Console.Write("Enter age: ");
-            int age = int.Parse(Console.ReadLine());
+            int age = ReadPositiveWholeNumber("Enter age: ");
             int price = GetTicketPrice(age);
             Console.WriteLine($"Ticket price: {price} kr");
 
@@ -40,20 +39,17 @@ while (running)
             Console.WriteLine(" ");
             Console.WriteLine("★ ★ ★  Group ticket price  ★ ★ ★");
             Console.WriteLine();
-            Console.WriteLine("How many people?");
-
-            int groupSize = int.Parse(Console.ReadLine());
+            int groupSize = ReadPositiveWholeNumber("How many people? ");
             int totalPrice = 0;
 
             for (int i = 1; i <= groupSize; i++)
             {
-                Console.Write($"Age of person {i}: ");
-                int personAge = int.Parse(Console.ReadLine());
-                totalPrice += GetTicketPrice(personAge);
+                totalPrice += GetTicketPrice(ReadPositiveWholeNumber($"Age of person {i}: "));
             }
 
+            Console.WriteLine();
+            Console.WriteLine($"Group size:            {groupSize}");
             Console.WriteLine($"Total price for group: {totalPrice} kr");
-
             Console.WriteLine();
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
@@ -79,4 +75,16 @@ static int GetTicketPrice(int age)
     if (age < 20) return 80;
     if (age > 64) return 90;
     return 120;
+}
+
+// Loops until the user enter a positive whole number
+static int ReadPositiveWholeNumber(string prompt)
+{
+    while (true)
+    {
+        Console.Write(prompt);
+        if (int.TryParse(Console.ReadLine(), out int value) && value > 0)
+            return value;
+        Console.WriteLine("Please enter a positive whole number.");
+    }
 }
