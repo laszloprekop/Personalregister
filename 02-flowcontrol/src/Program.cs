@@ -37,12 +37,15 @@ while (running)
             break;
         case 2:
             Console.WriteLine("(Not yet implemented.)");
+            Console.ReadKey();
             break;
         case 3:
             Console.WriteLine("(Not yet implemented.)");
+            Console.ReadKey();
             break;
         case 4:
             Console.WriteLine("(Not yet implemented.)");
+            Console.ReadKey();
             break;
         default:
             Console.WriteLine("Invalid option. Please try again.");
