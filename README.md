@@ -6,9 +6,10 @@ Exercises are written and documented in both English and Swedish.
 
 ## Exercises
 
-| # | Name | Description |
-|---|------|-------------|
-| 01 | [Personalregister](01-personalregister/) | Console app for managing an employee register |
+| # | Name                                     | Description                                                            |
+|---|------------------------------------------|------------------------------------------------------------------------|
+| 01 | [Personalregister](01-personalregister/) | Console app for managing an employee register                          |
+| 01 | [ControlFlow](02-controlflow/)           | Console app to practice control flow via loops and string manipulation |
 
 ## Structure
 
