@@ -24,18 +24,13 @@ while (running)
             break;
         case 1:
             Console.Clear();
-            Console.WriteLine("★ ★ ★ 2 Single ticket price  ★ ★ ★ ");
+            Console.WriteLine("★ ★ ★  Single ticket price  ★ ★ ★ ");
             Console.WriteLine();
             Console.Write("Enter age: ");
             int age = int.Parse(Console.ReadLine());
-            
-            if (age < 20)
-                Console.WriteLine("Youth Price: 80 kr");
-            else if (age > 64)
-                Console.WriteLine("Senior Price: 90 kr");
-            else
-                Console.WriteLine("Regular Price: 120 kr");
-            
+            int price = GetTicketPrice(age);
+            Console.WriteLine($"Ticket price: {price} kr");
+
             Console.WriteLine();
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
@@ -54,4 +49,12 @@ while (running)
             Console.ReadKey();
             break;
     }
+}
+
+// Returns ticket price based on age
+static int GetTicketPrice(int age)
+{
+    if (age < 20) return 80;
+    if (age > 64) return 90;
+    return 120;
 }
