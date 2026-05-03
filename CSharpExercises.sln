@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Personalregister", "01-pers
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-flowcontrol", "02-flowcontrol", "{A1B2C3D4-0002-0002-0002-000000000001}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowControl", "02-flowcontrol\src\FlowControl\FlowControl.csproj", "{A1B2C3D4-0002-0002-0002-000000000002}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowControl", "02-flowcontrol\src\FlowControl.csproj", "{A1B2C3D4-0002-0002-0002-000000000002}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
