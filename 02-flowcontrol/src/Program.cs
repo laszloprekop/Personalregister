@@ -53,6 +53,10 @@ while (running)
 */
 
             // Alternative solution using arrays and a quazi-table structure
+            const string top    = "╭────────────┬────────────┬──────────────────╮";
+            const string mid    = "├────────────┼────────────┼──────────────────┤";
+            const string mid2_1 = "├────────────┴────────────┼──────────────────┤";
+            const string bottom = "╰─────────────────────────┴──────────────────╯";
             int groupSize = ReadPositiveWholeNumber("How many people? ");
             int totalPrice = 0;
             int[] ages = new int[groupSize];
@@ -67,15 +71,16 @@ while (running)
             }
 
             Console.WriteLine();
-            Console.WriteLine("Person".PadRight(12) + "Age".PadRight(12) + "Price".PadLeft(12));
-            Console.WriteLine(new string('-', 36));
+            Console.WriteLine(top);
+            Console.WriteLine($"│ {"Person",-10} │ {"Age",-10} │ {"Price",16} │");
+            Console.WriteLine(mid);
             for (int i = 0; i < groupSize; i++)
             {
-                Console.WriteLine($"{i + 1}".PadRight(12) + $"{ages[i]}".PadRight(12) + $"{prices[i]} kr".PadLeft(12));
+                Console.WriteLine($"│ {(i + 1),-10} │ {ages[i],-10} │ {prices[i] + " kr",16} │");
             }
-
-            Console.WriteLine(new string('-', 36));
-            Console.WriteLine($"Group size: {groupSize}".PadRight(24) + $"Total: {totalPrice} kr".PadLeft(12));
+            Console.WriteLine(mid2_1);
+            Console.WriteLine($"│ {"Group size: " + groupSize,-23} │ {"Total: " + totalPrice + " kr",16} │");
+            Console.WriteLine(bottom);
             Console.WriteLine();
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
