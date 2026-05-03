@@ -39,7 +39,7 @@ while (running)
             Console.WriteLine(" ");
             Console.WriteLine("★ ★ ★  Group ticket price  ★ ★ ★ ");
             Console.WriteLine();
-            int groupSize = ReadPositiveWholeNumber("How many people? ");
+/*            int groupSize = ReadPositiveWholeNumber("How many people? ");
             int totalPrice = 0;
 
             for (int i = 1; i <= groupSize; i++)
@@ -50,6 +50,32 @@ while (running)
             Console.WriteLine();
             Console.WriteLine($"Group size:            {groupSize}");
             Console.WriteLine($"Total price for group: {totalPrice} kr");
+*/
+
+            // Alternative solution using arrays and a quazi-table structure
+            int groupSize = ReadPositiveWholeNumber("How many people? ");
+            int totalPrice = 0;
+            int[] ages = new int[groupSize];
+            int[] prices = new int[groupSize];
+
+            for (int i = 0; i < groupSize; i++)
+            {
+                Console.Write($"Age of person {i + 1}: ");
+                ages[i] = ReadPositiveWholeNumber("");
+                prices[i] = GetTicketPrice(ages[i]);
+                totalPrice += prices[i];
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Person".PadRight(12) + "Age".PadRight(12) + "Price".PadLeft(12));
+            Console.WriteLine(new string('-', 36));
+            for (int i = 0; i < groupSize; i++)
+            {
+                Console.WriteLine($"{i + 1}".PadRight(12) + $"{ages[i]}".PadRight(12) + $"{prices[i]} kr".PadLeft(12));
+            }
+
+            Console.WriteLine(new string('-', 36));
+            Console.WriteLine($"Group size: {groupSize}".PadRight(24) + $"Total: {totalPrice} kr".PadLeft(12));
             Console.WriteLine();
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
@@ -81,6 +107,7 @@ while (running)
                 Console.ReadKey();
                 break;
             }
+
             Console.WriteLine($"The third word is: {words[2]}");
             Console.WriteLine();
             Console.WriteLine("Press any key to continue...");
