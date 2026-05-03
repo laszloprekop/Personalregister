@@ -93,7 +93,8 @@ while (running)
             string text = Console.ReadLine() ?? string.Empty;
             for (int i = 1; i <= 10; i++)
             {
-                Console.WriteLine($"{i}. {text}");
+                Console.Write($"{i}. {text}");
+                if (i < 10) Console.Write(", ");
             }
 
             Console.WriteLine();
