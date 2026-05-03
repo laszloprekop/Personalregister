@@ -5,7 +5,7 @@ A console application demonstrating C# flow control fundamentals: loops, switch-
 ## Features
 
 - Menu-driven interface with an infinite loop and clean exit
-- Cinema ticket pricing by age (youth / standard / pensioner)
+- Cinema ticket pricing by age (youth / standard / pensioner / free)
 - Group ticket calculator with a formatted summary table
 - Text repetition via `for` loop
 - Third-word extraction via `string.Split`
@@ -36,23 +36,28 @@ Choose an option:
 
 ### [1] Single ticket price
 
-Prices are determined by age: youth (under 20) · standard (20–64) · pensioner (over 64).
+Prices are determined by age: free (≤ 5 or ≥ 100) · youth (6–19) · standard (20–64) · senior (65–99).
 
 ```
 ★ ★ ★  Single ticket price  ★ ★ ★ 
 
+Enter age: 4
+Ticket price: Free
+```
+
+```
 Enter age: 17
-Ticket price: 80 kr
+Ticket price: 80 kr (Youth (-33%))
 ```
 
 ```
 Enter age: 34
-Ticket price: 120 kr
+Ticket price: 120 kr (Standard)
 ```
 
 ```
 Enter age: 71
-Ticket price: 90 kr
+Ticket price: 90 kr (Senior (-25%))
 ```
 
 ---
@@ -70,16 +75,16 @@ Age of person 2: 24
 Age of person 3: 64
 Age of person 4: 82
 
-╭────────────┬────────────┬──────────────────╮
-│ Person     │ Age        │            Price │
-├────────────┼────────────┼──────────────────┤
-│ 1          │ 9          │            80 kr │
-│ 2          │ 24         │           120 kr │
-│ 3          │ 64         │           120 kr │
-│ 4          │ 82         │            90 kr │
-├────────────┴────────────┼──────────────────┤
-│ Group size: 4           │    Total: 410 kr │
-╰─────────────────────────┴──────────────────╯
+╭────────────┬────────────┬────────────────┬──────────╮
+│ Person     │ Age        │       Category │    Price │
+├────────────┼────────────┼────────────────┼──────────┤
+│          1 │          9 │   Youth (-33%) │    80 kr │
+│          2 │         24 │       Standard │   120 kr │
+│          3 │         64 │       Standard │   120 kr │
+│          4 │         82 │  Senior (-25%) │    90 kr │
+├────────────┴────────────┼────────────────┴──────────┤
+│ Group size: 4           │             Total: 410 kr │
+╰─────────────────────────┴───────────────────────────╯
 
 Press any key to continue...
 ```
@@ -88,22 +93,15 @@ Press any key to continue...
 
 ### [3] Repeat text
 
-Prints the entered text ten times using a `for` loop.
+Prints the entered text N times (default 10) using a `for` loop, comma-separated on one line.
 
 ```
 ★ ★ ★  Repeat text  ★ ★ ★ 
 
-Enter text to repeat ten times: hello
-1. hello
-2. hello
-3. hello
-4. hello
-5. hello
-6. hello
-7. hello
-8. hello
-9. hello
-10. hello
+Enter text to repeat ten times: 
+hello
+Number of times to repeat (default 10): 
+1. hello, 2. hello, 3. hello, 4. hello, 5. hello, 6. hello, 7. hello, 8. hello, 9. hello, 10. hello
 
 Press any key to continue...
 ```
@@ -126,4 +124,5 @@ Press any key to continue...
 ## Notes
 
 - All numeric input is validated — invalid entries re-prompt rather than crash
+- Children aged 5 or under and centenarians (100+) get free tickets
 - Data is not persisted between runs
