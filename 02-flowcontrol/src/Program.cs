@@ -36,7 +36,26 @@ while (running)
             Console.ReadKey();
             break;
         case 2:
-            Console.WriteLine("(Not yet implemented.)");
+            Console.Clear();
+            Console.WriteLine(" ");
+            Console.WriteLine("★ ★ ★  Group ticket price  ★ ★ ★");
+            Console.WriteLine();
+            Console.WriteLine("How many people?");
+
+            int groupSize = int.Parse(Console.ReadLine());
+            int totalPrice = 0;
+
+            for (int i = 1; i <= groupSize; i++)
+            {
+                Console.Write($"Age of person {i}: ");
+                int personAge = int.Parse(Console.ReadLine());
+                totalPrice += GetTicketPrice(personAge);
+            }
+
+            Console.WriteLine($"Total price for group: {totalPrice} kr");
+
+            Console.WriteLine();
+            Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
             break;
         case 3:
