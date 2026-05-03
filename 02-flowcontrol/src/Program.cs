@@ -28,7 +28,9 @@ while (running)
             Console.WriteLine();
             int age = ReadPositiveWholeNumber("Enter age: ");
             int price = GetTicketPrice(age);
-            Console.WriteLine($"Ticket price: {price} kr");
+            string category = GetPriceCategory(age);
+            string priceDisplay = price == 0 ? "Free" : $"{price} kr ({category})";
+            Console.WriteLine($"Ticket price: {priceDisplay}");
 
             Console.WriteLine();
             Console.WriteLine("Press any key to continue...");
@@ -53,10 +55,11 @@ while (running)
 */
 
             // Alternative solution using arrays and a quazi-table structure
-            const string top = "╭────────────┬────────────┬──────────────────╮";
-            const string mid = "├────────────┼────────────┼──────────────────┤";
-            const string mid21 = "├────────────┴────────────┼──────────────────┤";
-            const string bottom = "╰─────────────────────────┴──────────────────╯";
+            const string top = "╭────────────┬────────────┬────────────────┬──────────╮";
+            const string mid = "├────────────┼────────────┼────────────────┼──────────┤";
+            const string mid21 = "├────────────┴────────────┼────────────────┴──────────┤";
+            const string bottom = "╰─────────────────────────┴───────────────────────────╯";
+
             int groupSize = ReadPositiveWholeNumber("How many people? ", min: 2);
             int totalPrice = 0;
             int[] ages = new int[groupSize];
@@ -70,17 +73,23 @@ while (running)
                 totalPrice += prices[i];
             }
 
+            // Table header
             Console.WriteLine();
             Console.WriteLine(top);
-            Console.WriteLine($"│ {"Person",-10} │ {"Age",-10} │ {"Price",16} │");
+            Console.WriteLine($"│ {"Person",-10} │ {"Age",-10} │ {"Discount",-14} │ {"Price",8} │");
+
+            // Table body
             Console.WriteLine(mid);
             for (int i = 0; i < groupSize; i++)
             {
-                Console.WriteLine($"│ {(i + 1),-10} │ {ages[i],-10} │ {prices[i] + " kr",16} │");
+                string discount = GetPriceCategory(ages[i]);
+                string priceCell = prices[i] == 0 ? "-" : prices[i] + " kr";
+                Console.WriteLine($"│ {(i + 1),-10} │ {ages[i],-10} │ {discount,-14} │ {priceCell,8} │");
             }
 
+            // Table footer
             Console.WriteLine(mid21);
-            Console.WriteLine($"│ {"Group size: " + groupSize,-23} │ {"Total: " + totalPrice + " kr",16} │");
+            Console.WriteLine($"│ {"Group size: " + groupSize,-23} │ {$"Total: {totalPrice} kr",25} │");
             Console.WriteLine(bottom);
             Console.WriteLine();
             Console.WriteLine("Press any key to continue...");
@@ -149,4 +158,16 @@ static int ReadPositiveWholeNumber(string prompt, int min = 1)
             return value;
         Console.WriteLine($"Please enter a whole number greater than {min}.");
     }
+}
+
+// Returns category label with discount vs. Standard
+static string GetPriceCategory(int age)
+{
+    return age switch
+    {
+        <= 5 or >= 100 => "Free",
+        < 20 => "Youth (-33%)",
+        > 64 => "Senior (-25%)",
+        _ => "Standard"
+    };
 }
