@@ -187,3 +187,19 @@ static int ReadPositiveIntWithDefault(string prompt, int defaultValue)
         Console.WriteLine("Please enter a positive whole number.");
     }
 }
+
+// Two utility helpers to add coloring to the console app
+
+static void WriteColored(string text, ConsoleColor color)
+{
+    Console.ForegroundColor = color;
+    Console.Write(text);
+    Console.ResetColor();
+}
+
+static void WriteLineColored(string text, ConsoleColor color)
+{
+    Console.ForegroundColor = color;
+    Console.WriteLine(text);
+    Console.ResetColor();   
+}
