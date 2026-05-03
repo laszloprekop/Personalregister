@@ -39,7 +39,7 @@ while (running)
             Console.WriteLine(" ");
             Console.WriteLine("★ ★ ★  Group ticket price  ★ ★ ★ ");
             Console.WriteLine();
-            int groupSize = ReadPositiveWholeNumber("How many people? ");
+/*            int groupSize = ReadPositiveWholeNumber("How many people? ");
             int totalPrice = 0;
 
             for (int i = 1; i <= groupSize; i++)
@@ -50,6 +50,37 @@ while (running)
             Console.WriteLine();
             Console.WriteLine($"Group size:            {groupSize}");
             Console.WriteLine($"Total price for group: {totalPrice} kr");
+*/
+
+            // Alternative solution using arrays and a quazi-table structure
+            const string top    = "╭────────────┬────────────┬──────────────────╮";
+            const string mid    = "├────────────┼────────────┼──────────────────┤";
+            const string mid21 = "├────────────┴────────────┼──────────────────┤";
+            const string bottom = "╰─────────────────────────┴──────────────────╯";
+            int groupSize = ReadPositiveWholeNumber("How many people? ");
+            int totalPrice = 0;
+            int[] ages = new int[groupSize];
+            int[] prices = new int[groupSize];
+
+            for (int i = 0; i < groupSize; i++)
+            {
+                Console.Write($"Age of person {i + 1}: ");
+                ages[i] = ReadPositiveWholeNumber("");
+                prices[i] = GetTicketPrice(ages[i]);
+                totalPrice += prices[i];
+            }
+
+            Console.WriteLine();
+            Console.WriteLine(top);
+            Console.WriteLine($"│ {"Person",-10} │ {"Age",-10} │ {"Price",16} │");
+            Console.WriteLine(mid);
+            for (int i = 0; i < groupSize; i++)
+            {
+                Console.WriteLine($"│ {(i + 1),-10} │ {ages[i],-10} │ {prices[i] + " kr",16} │");
+            }
+            Console.WriteLine(mid21);
+            Console.WriteLine($"│ {"Group size: " + groupSize,-23} │ {"Total: " + totalPrice + " kr",16} │");
+            Console.WriteLine(bottom);
             Console.WriteLine();
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
@@ -81,6 +112,7 @@ while (running)
                 Console.ReadKey();
                 break;
             }
+
             Console.WriteLine($"The third word is: {words[2]}");
             Console.WriteLine();
             Console.WriteLine("Press any key to continue...");
