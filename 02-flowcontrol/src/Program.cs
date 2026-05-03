@@ -119,7 +119,7 @@ while (running)
             Console.WriteLine();
             Console.Write("Enter a sentence (at least 3 words): ");
             string sentence = Console.ReadLine() ?? string.Empty;
-            string[] words = sentence.Split(' ');
+            string[] words = sentence.Split(' ', StringSplitOptions.RemoveEmptyEntries);
             if (words.Length < 3)
             {
                 Console.WriteLine("Error: Sentence must have at least 3 words.");
