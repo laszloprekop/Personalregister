@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-bool running = true;
+﻿bool running = true;
 
 const ConsoleColor titleColor = ConsoleColor.Cyan;
 const ConsoleColor messageColor = ConsoleColor.White;
@@ -51,18 +49,6 @@ while (running)
             Console.WriteLine();
             WriteLineColored("★ ★ ★  Group ticket price  ★ ★ ★ ", titleColor);
             Console.WriteLine();
-/*            int groupSize = ReadPositiveWholeNumber("How many people? ");
-            int totalPrice = 0;
-
-            for (int i = 1; i <= groupSize; i++)
-            {
-                totalPrice += GetTicketPrice(ReadPositiveWholeNumber($"Age of person {i}: "));
-            }
-
-            Console.WriteLine();
-            Console.WriteLine($"Group size:            {groupSize}");
-            Console.WriteLine($"Total price for group: {totalPrice} kr");
-*/
 
             // Alternative solution using arrays and a quazi-table structure
             const string top = "╭────────────┬────────────┬────────────────┬──────────╮";
