@@ -55,7 +55,18 @@ while (running)
             Console.ReadKey();
             break;
         case 3:
-            Console.WriteLine("(Not yet implemented.)");
+            Console.WriteLine();
+            Console.WriteLine("★ ★ ★  Repeat text  ★ ★ ★");
+            Console.WriteLine();
+            Console.Write("Enter text to repeat ten times: ");
+            string text = Console.ReadLine() ?? string.Empty;
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.WriteLine($"{i}. {text}");
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
             break;
         case 4:
