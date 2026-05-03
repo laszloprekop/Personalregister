@@ -1,4 +1,6 @@
-﻿bool running = true;
+﻿using System.Diagnostics;
+
+bool running = true;
 
 while (running)
 {
@@ -101,10 +103,11 @@ while (running)
             Console.WriteLine();
             Console.Write("Enter text to repeat ten times: ");
             string text = Console.ReadLine() ?? string.Empty;
-            for (int i = 1; i <= 10; i++)
+            int times = ReadPositiveIntWithDefault("Number of times to repeat (default 10)", 10);
+            for (int i = 1; i <= times; i++)
             {
                 Console.Write($"{i}. {text}");
-                if (i < 10) Console.Write(", ");
+                if (i < times) Console.Write(", ");
             }
 
             Console.WriteLine();
@@ -170,4 +173,17 @@ static string GetPriceCategory(int age)
         > 64 => "Senior (-25%)",
         _ => "Standard"
     };
+}
+
+// Helper method to read a positive integer with a default value
+static int ReadPositiveIntWithDefault(string prompt, int defaultValue)
+{
+    while (true)
+    {
+        Console.Write($"{prompt}: ");
+        string? input = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(input)) return defaultValue;
+        if (int.TryParse(input, out var value) && value > 0) return value;
+        Console.WriteLine("Please enter a positive whole number.");
+    }
 }
