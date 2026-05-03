@@ -57,7 +57,7 @@ while (running)
             const string mid    = "├────────────┼────────────┼──────────────────┤";
             const string mid21 = "├────────────┴────────────┼──────────────────┤";
             const string bottom = "╰─────────────────────────┴──────────────────╯";
-            int groupSize = ReadPositiveWholeNumber("How many people? ");
+            int groupSize = ReadPositiveWholeNumber("How many people? ", min: 2);
             int totalPrice = 0;
             int[] ages = new int[groupSize];
             int[] prices = new int[groupSize];
@@ -135,13 +135,13 @@ static int GetTicketPrice(int age)
 }
 
 // Loops until the user enter a positive whole number
-static int ReadPositiveWholeNumber(string prompt)
+static int ReadPositiveWholeNumber(string prompt, int min = 1 )
 {
     while (true)
     {
         Console.Write(prompt);
-        if (int.TryParse(Console.ReadLine(), out int value) && value > 0)
+        if (int.TryParse(Console.ReadLine(), out int value) && value >= min)
             return value;
-        Console.WriteLine("Please enter a positive whole number.");
+        Console.WriteLine($"Please enter a whole number greater than {min}.");
     }
 }
