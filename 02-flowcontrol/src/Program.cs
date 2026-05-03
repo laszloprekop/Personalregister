@@ -2,7 +2,8 @@
 
 while (running)
 {
-    Console.WriteLine("★★★ Flow Control practices ★★★");
+    Console.Clear();
+    Console.WriteLine("★★★ Flow Control Exercises ★★★");
     Console.WriteLine();
     Console.WriteLine("[1] Single ticket price");
     Console.WriteLine("[2] Group ticket price");
@@ -13,7 +14,8 @@ while (running)
     Console.Write("Choose an option: ");
 
 
-    int choice = int.Parse(Console.ReadLine());
+    if (!int.TryParse(Console.ReadLine(), out int choice))
+        choice = -1;
 
     switch (choice)
     {
@@ -22,6 +24,7 @@ while (running)
             break;
         default:
             Console.WriteLine("Invalid option. Please try again.");
+            Console.ReadKey();
             break;
     }
 }
