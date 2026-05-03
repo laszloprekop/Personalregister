@@ -53,8 +53,8 @@ while (running)
 */
 
             // Alternative solution using arrays and a quazi-table structure
-            const string top    = "╭────────────┬────────────┬──────────────────╮";
-            const string mid    = "├────────────┼────────────┼──────────────────┤";
+            const string top = "╭────────────┬────────────┬──────────────────╮";
+            const string mid = "├────────────┼────────────┼──────────────────┤";
             const string mid21 = "├────────────┴────────────┼──────────────────┤";
             const string bottom = "╰─────────────────────────┴──────────────────╯";
             int groupSize = ReadPositiveWholeNumber("How many people? ", min: 2);
@@ -78,6 +78,7 @@ while (running)
             {
                 Console.WriteLine($"│ {(i + 1),-10} │ {ages[i],-10} │ {prices[i] + " kr",16} │");
             }
+
             Console.WriteLine(mid21);
             Console.WriteLine($"│ {"Group size: " + groupSize,-23} │ {"Total: " + totalPrice + " kr",16} │");
             Console.WriteLine(bottom);
@@ -129,13 +130,17 @@ while (running)
 // Returns ticket price based on age
 static int GetTicketPrice(int age)
 {
-    if (age < 20) return 80;
-    if (age > 64) return 90;
-    return 120;
+    return age switch
+    {
+        <= 5 or >= 100 => 0,
+        < 20 => 80,
+        > 64 => 90,
+        _ => 120
+    };
 }
 
 // Loops until the user enter a positive whole number
-static int ReadPositiveWholeNumber(string prompt, int min = 1 )
+static int ReadPositiveWholeNumber(string prompt, int min = 1)
 {
     while (true)
     {
