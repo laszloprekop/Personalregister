@@ -119,6 +119,7 @@ while (running)
             Console.ReadKey();
             break;
         case 3:
+            Console.Clear();
             Console.WriteLine();
             WriteLineColored("★ ★ ★  Repeat text  ★ ★ ★ ", titleColor);
             Console.WriteLine();
@@ -136,6 +137,7 @@ while (running)
             Console.ReadKey();
             break;
         case 4:
+            Console.Clear();
             WriteLineColored("★ ★ ★  Extract third word  ★ ★ ★ ", titleColor);
             Console.WriteLine();
             Console.Write("Enter a sentence (at least 3 words): ");
