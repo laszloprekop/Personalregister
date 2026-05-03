@@ -37,7 +37,7 @@ while (running)
         case 2:
             Console.Clear();
             Console.WriteLine(" ");
-            Console.WriteLine("★ ★ ★  Group ticket price  ★ ★ ★");
+            Console.WriteLine("★ ★ ★  Group ticket price  ★ ★ ★ ");
             Console.WriteLine();
             int groupSize = ReadPositiveWholeNumber("How many people? ");
             int totalPrice = 0;
@@ -56,7 +56,7 @@ while (running)
             break;
         case 3:
             Console.WriteLine();
-            Console.WriteLine("★ ★ ★  Repeat text  ★ ★ ★");
+            Console.WriteLine("★ ★ ★  Repeat text  ★ ★ ★ ");
             Console.WriteLine();
             Console.Write("Enter text to repeat ten times: ");
             string text = Console.ReadLine() ?? string.Empty;
@@ -70,7 +70,20 @@ while (running)
             Console.ReadKey();
             break;
         case 4:
-            Console.WriteLine("(Not yet implemented.)");
+            Console.WriteLine("★ ★ ★  Extract third word  ★ ★ ★ ");
+            Console.WriteLine();
+            Console.Write("Enter a sentence (at least 3 words): ");
+            string sentence = Console.ReadLine() ?? string.Empty;
+            string[] words = sentence.Split(' ');
+            if (words.Length < 3)
+            {
+                Console.WriteLine("Error: Sentence must have at least 3 words.");
+                Console.ReadKey();
+                break;
+            }
+            Console.WriteLine($"The third word is: {words[2]}");
+            Console.WriteLine();
+            Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
             break;
         default:
